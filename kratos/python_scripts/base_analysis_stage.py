@@ -28,10 +28,7 @@ class AnalysisStage(object):
         self.model = model
         self.project_parameters = project_parameters
 
-
-
-        ##HERE WE SHOULD CONSTRUCT A SOLVER - stages should contain at least one solver
-        ##self.solver = ... HERE WE CONSTRUCT THE SOLVER
+        self._GetSolver.AddVariables() # this creates the solver and adds the variables
 
     def Run(self):
         """This function executes the entire AnalysisStage
@@ -65,6 +62,8 @@ class AnalysisStage(object):
         """
         self._GetSolver().ReadModelPart()
         self._GetSolver().PrepareModelPartForSolver()
+        self._GetSolver().AddDofs()
+
         self.ModifyInitialProperties()
         self.ModifyInitialGeometry()
 

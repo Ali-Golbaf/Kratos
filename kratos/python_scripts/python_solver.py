@@ -46,6 +46,9 @@ class PythonSolver(object):
     def ExportModelPart(self):
         pass
 
+    def AdvanceInTime(self):
+        pass
+
     def ComputeDeltaTime(self):
         pass
 
