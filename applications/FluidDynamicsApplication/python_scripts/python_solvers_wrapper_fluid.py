@@ -30,6 +30,14 @@ def CreateSolver(main_model_part, custom_settings):
         elif (solver_type == "Compressible"):
             solver_module_name = "navier_stokes_compressible_solver"
 
+        elif (solver_type == "ale_monolithic"):
+            import KratosMultiphysics.MeshMovingApplication
+            solver_module_name = "ale_navier_stokes_solver_vmsmonolithic"
+
+        elif (solver_type == "ale_fractional_step"):
+            import KratosMultiphysics.MeshMovingApplication
+            solver_module_name = "ale_navier_stokes_solver_fractionalstep"
+
         else:
             raise Exception("the requested solver type is not in the python solvers wrapper")
 
@@ -46,7 +54,15 @@ def CreateSolver(main_model_part, custom_settings):
 
         elif (solver_type == "EmbeddedAusas"):
             solver_module_name = "trilinos_navier_stokes_embedded_ausas_solver"
-  
+
+        elif (solver_type == "ale_monolithic"):
+            import KratosMultiphysics.MeshMovingApplication
+            solver_module_name = "ale_trilinos_navier_stokes_solver_vmsmonolithic"
+
+        elif (solver_type == "ale_fractional_step"):
+            import KratosMultiphysics.MeshMovingApplication
+            solver_module_name = "ale_trilinos_navier_stokes_solver_fractionalstep"
+
         else:
             raise Exception("the requested solver type is not in the python solvers wrapper")
     else:
